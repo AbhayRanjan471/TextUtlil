@@ -18,6 +18,20 @@ export default function TextForm(props) {
     setText(newText);
   }
 
+  //Alternate case ,this function is used to convert the alternate charcater to upper and lower case 
+  const handleAltClick = ()=>{
+    let newText="";
+    for(var i = 0 ; i < text.length ; i++){
+      if(i % 2 !== 0){
+        newText +=text.charAt(i).toUpperCase();
+      }
+      else{
+        newText +=text.charAt(i).toLowerCase();
+      }
+    }
+    setText(newText);
+  }
+
   //we have to handle the onChange listen, else we will not be able to type in the text area
   const handleOnChange = (event)=>{
     setText(event.target.value);
@@ -35,6 +49,7 @@ export default function TextForm(props) {
         <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
         <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
         <button className="btn btn-primary mx-3 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
+        <button className="btn btn-primary mx-3 my-2" onClick={handleAltClick}>Convert to AlternateCase</button>
         </div>
     </div>
     <div className='container my-2'>
