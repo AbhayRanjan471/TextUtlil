@@ -38,7 +38,7 @@ export default function TextForm(props) {
   }
 
   // Declare a new state variable, which we'll call "text"
-  const [text, setText] = useState('Enter text here');
+  const [text, setText] = useState('');
   // text = "new text"; //wrong way to change the state
   // setText("new text"); // Correct way to change the state, this will change the Text
   return (
@@ -46,7 +46,7 @@ export default function TextForm(props) {
     <div className='container'>    
         <h1>{props.heading}</h1>
         <div className="mb-3">
-        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder='Enter the text...'></textarea>
         <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
         <button className="btn btn-primary mx-3 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
         <button className="btn btn-primary mx-3 my-2" onClick={handleAltClick}>Convert to AlternateCase</button>
