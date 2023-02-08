@@ -32,6 +32,11 @@ export default function TextForm(props) {
     setText(newText);
   }
 
+  //this function will clear the text when click on the clear text button
+  const handleClearText = ()=>{
+    setText('');
+  }
+
   //we have to handle the onChange listen, else we will not be able to type in the text area
   const handleOnChange = (event)=>{
     setText(event.target.value);
@@ -43,21 +48,23 @@ export default function TextForm(props) {
   // setText("new text"); // Correct way to change the state, this will change the Text
   return (
     <>
-    <div className='container'>    
+    {/* style{1st curly braces is for javaScript{2nd is for object inside javaScript}} */}
+    <div className='container' style={{color: props.mode==='light'?'black':'white'}}>    
         <h1>{props.heading}</h1>
         <div className="mb-3">
-        <textarea className="form-control" value={text} onChange={handleOnChange} id="myBox" rows="8" placeholder='Enter the text...'></textarea>
+        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='light'?'white':'#bab7b79c', color: props.mode==='light'?'black':'white'}} id="myBox" rows="8" placeholder='Enter the text...'></textarea>
         <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
         <button className="btn btn-primary mx-3 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
         <button className="btn btn-primary mx-3 my-2" onClick={handleAltClick}>Convert to AlternateCase</button>
+        <button className="btn btn-primary mx-3 my-2" onClick={handleClearText}>Clear Text</button>
         </div>
     </div>
-    <div className='container my-2'>
+    <div className='container my-2' style={{color: props.mode==='light'?'black':'white'}}>
       <h2>Your text summary</h2>
-      <p>{text.split(" ").length} words and {text.length} characters</p>
+      <p>{text.length===0?0:text.split(" ").length-1} words and {text.length} characters</p>
       <p>{0.08 * text.split(" ").length} Minutes read</p>
       <h2>Preview</h2>
-      <p>{text}</p>
+      <p>{text.length > 0 ? text:"Enter something in the textbox above to preview it here..."}</p>
     </div>
     </>
   )
