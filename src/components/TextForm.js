@@ -11,11 +11,13 @@ export default function TextForm(props) {
     let newText = text.toUpperCase(); //converting the text to upper case
     //here we are changing the text/state
     setText(newText);
+    props.showAlert("Converted to upperCase", 'success');
   }
 
   const handleLoClick = ()=>{
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowerCase", 'success');
   }
 
   //Alternate case ,this function is used to convert the alternate charcater to upper and lower case 
@@ -30,11 +32,13 @@ export default function TextForm(props) {
       }
     }
     setText(newText);
+    props.showAlert("Converted to Alternate character", 'success');
   }
 
   //this function will clear the text when click on the clear text button
   const handleClearText = ()=>{
     setText('');
+    props.showAlert("Clear", 'success');
   }
 
   //we have to handle the onChange listen, else we will not be able to type in the text area
