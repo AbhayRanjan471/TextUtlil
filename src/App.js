@@ -37,6 +37,8 @@ function App() {
       setTheme('dark');
       document.body.style.backgroundColor = 'white';
       showAlert("light mode has been enabled", "success");
+      //if we want to change the title of the taskbar, when we enable dark mode we will do
+      // document.title ='TextUtils - Light Mode';
     }
     else{
       setMode('dark');
@@ -44,6 +46,8 @@ function App() {
       setTheme('light');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark mode has been enabled", "success");
+      //to change the taskbar title
+      // document.title ='TextUtils - Dark Mode';
     }
   }
   return ( //we can return only one thing, so wrap up ur whole code using this tage <></>
