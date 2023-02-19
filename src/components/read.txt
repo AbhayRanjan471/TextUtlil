@@ -1,0 +1,7 @@
+//1.we have install the ract router
+npm install react-router-dom
+
+//2. Here we will import Link from the react-router 
+and in place of <a> and 'href' we will use <Link> 'to' to make the particular elemnt clickable 
+we are doing this so bcz , if we use <a> tag it will make the page slower bcz whenever we will click , it will reload the page ,
+which is not true in <Link> tag , it doesn't reload the page which makes the website fater

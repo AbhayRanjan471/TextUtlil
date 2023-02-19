@@ -5,6 +5,14 @@ import TextForm from './components/TextForm';
 import About from './components/About';
 import React, {useState} from 'react';
 import Alert from './components/Alert';
+
+//In react-router-dom v6, ‘Switch’ is replaced by ‘Routes’.
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link
+} from "react-router-dom";
  
 function App() {
 
@@ -53,14 +61,21 @@ function App() {
   return ( //we can return only one thing, so wrap up ur whole code using this tage <></>
     //JSX
       <>
-      
-        <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} modeName={modeName} modeTheme={modeTheme}/> 
-        <Alert alert ={alert}/>
-        <div className="container my-3">
-        <TextForm showAlert={showAlert} heading="Enter the text to analyse" mode={mode}/>
-        {/* <About/> */}
-        </div> 
-        
+      {/* We will wrap the whole content in the inside the Router tag, to use React router */}
+      <Router>
+          <Navbar title="TextUtils" aboutText="About" mode={mode} toggleMode={toggleMode} modeName={modeName} modeTheme={modeTheme}/> 
+          <Alert alert ={alert}/>
+          <div className="container my-3">
+                {/* 👇️ Wrap your Route components in a Routes component */}
+              <Routes>
+                {/* 'exact path' : it will find the eaxt path of the url and we use only 'path="about"': it will check for the partial url */}
+                <Route exact path="/about" element={<About />} />
+                <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse" mode={mode}/>} />
+              </Routes>
+          
+          </div> 
+
+        </Router>
       </>
   );
 }
