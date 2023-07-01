@@ -18,7 +18,7 @@ export default function Navbar(props) {
       <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item">
           {/* to link instead of anchor tag we will use Link  and in plzce of 'href' we will use 'to' , here we can use the <a> tag also but it will reload and the page whenver u click , which will make ur website slower*/}
-          <Link className="nav-link active" aria-current="page" to="/">Home</Link>
+          <Link className="nav-link " aria-current="page" to="/">Home</Link>
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/about">{props.aboutText}</Link>
@@ -29,10 +29,6 @@ export default function Navbar(props) {
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-primary" type="submit">Search</button>
       </form>
-
-      {/* <div className='d-flex'>
-        <div className='bg-primary rounded mx-2 my-2' onClick={} style={{height: '20px' , width:'20px'}}></div>
-      </div> */}
 
       <div className={`form-check form-switch mx-3 text-${props.modeTheme}`}>
                   {/* OR */}
