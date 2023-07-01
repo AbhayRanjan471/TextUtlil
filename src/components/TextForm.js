@@ -35,6 +35,13 @@ export default function TextForm(props) {
     props.showAlert("Converted to Alternate character", 'success');
   }
 
+  //if more then one space is present then we will remove that extra space
+  const handleExtraSpaces = ()=>{
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+    props.showAlert("Removed extra spaces", 'success');
+  }
+
   //this function will clear the text when click on the clear text button
   const handleClearText = ()=>{
     setText('');
@@ -54,21 +61,22 @@ export default function TextForm(props) {
     <>
     {/* style{1st curly braces is for javaScript{2nd is for object inside javaScript}} */}
     <div className='container' style={{color: props.mode==='light'?'black':'white'}}>    
-        <h1>{props.heading}</h1>
+        <h1 className="mb-2">{props.heading}</h1>
         <div className="mb-3">
-        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='light'?'white':'#bab7b79c', color: props.mode==='light'?'black':'white'}} id="myBox" rows="8" placeholder='Enter the text...'></textarea>
-        <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
-        <button className="btn btn-primary mx-3 my-2" onClick={handleLoClick}>Convert to Lowercase</button>
-        <button className="btn btn-primary mx-3 my-2" onClick={handleAltClick}>Convert to AlternateCase</button>
-        <button className="btn btn-primary mx-3 my-2" onClick={handleClearText}>Clear Text</button>
+        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='light'?'white':'#13466e', color: props.mode==='light'?'black':'white'}} id="myBox" rows="8" placeholder='Enter the text...'></textarea>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleUpClick}>Convert to Uppercase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleLoClick}>Convert to Lowercase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleAltClick}>Convert to AlternateCase</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleClearText}>Clear Text</button>
+        <button disabled={text.length===0} className="btn btn-primary mx-1 my-1" onClick={handleExtraSpaces}>Remove extra space</button>
         </div>
     </div>
     <div className='container my-2' style={{color: props.mode==='light'?'black':'white'}}>
       <h2>Your text summary</h2>
-      <p>{text.length===0?0:text.split(" ").length-1} words and {text.length} characters</p>
-      <p>{0.08 * text.split(" ").length} Minutes read</p>
+      <p>{text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters</p>
+      <p>{0.08 * text.split(" ").filter((element)=>{return element.length!==0}).length} Minutes read</p>
       <h2>Preview</h2>
-      <p>{text.length > 0 ? text:"Enter something in the textbox above to preview it here..."}</p>
+      <p>{text.length > 0 ? text:"Nothing to preview!"}</p>
     </div>
     </>
   )

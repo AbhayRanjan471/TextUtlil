@@ -11,7 +11,7 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Link
+  // Link
 } from "react-router-dom";
  
 function App() {
@@ -69,8 +69,8 @@ function App() {
                 {/* 👇️ Wrap your Route components in a Routes component */}
               <Routes>
                 {/* 'exact path' : it will find the eaxt path of the url and we use only 'path="about"': it will check for the partial url */}
-                <Route exact path="/about" element={<About />} />
-                <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter the text to analyse" mode={mode}/>} />
+                <Route exact path="/about" element={<About mode={mode}/>} />
+                <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Try TextUtils - word Counter, charcater Counter, Remove extra spaces" mode={mode}/>} />
               </Routes>
           
           </div> 

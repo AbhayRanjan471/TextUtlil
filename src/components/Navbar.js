@@ -22,13 +22,18 @@ export default function Navbar(props) {
         </li>
         <li className="nav-item">
           <Link className="nav-link" to="/about">{props.aboutText}</Link>
-        </li>
-        
+        </li>      
       </ul>
+
       <form className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
         <button className="btn btn-outline-primary" type="submit">Search</button>
       </form>
+
+      {/* <div className='d-flex'>
+        <div className='bg-primary rounded mx-2 my-2' onClick={} style={{height: '20px' , width:'20px'}}></div>
+      </div> */}
+
       <div className={`form-check form-switch mx-3 text-${props.modeTheme}`}>
                   {/* OR */}
                 {/* <div className={`form-check form-switch mx-3 text-${props.mode ==='light' ?'dark':'light'}`}>  */}
